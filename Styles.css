@@ -1,0 +1,1086 @@
+:root{
+  --bg:#fffaf6;
+  --surface:#ffffff;
+  --text:#2f2f2f;
+  --muted:#7a6457;
+  --brand:#d87c3a;
+  --brand-2:#8b5122;
+  --border:#f2e6dc;
+  --chip:#fff7f1;
+  --shadow:0 18px 50px rgba(0,0,0,.08);
+  --radius:18px;
+}
+
+*{ box-sizing:border-box }
+html,body{ height:100% }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family: Vazirmatn, system-ui, -apple-system, Segoe UI, Tahoma, sans-serif;
+  line-height:1.85;
+}
+.container{ max-width:1120px; margin:0 auto; padding:16px }
+
+/* ===== Glass Nav ===== */
+.glassnav{ position:sticky; top:8px; z-index:40; display:grid; place-items:center; pointer-events:none; }
+.glassnav__inner{
+  pointer-events:all; display:flex; align-items:center; justify-content:space-between; gap:14px;
+  width:min(1100px,92%); padding:10px 14px;
+  background: color-mix(in oklab, white 65%, transparent);
+  backdrop-filter: blur(10px) saturate(130%);
+  border:1px solid color-mix(in oklab, #f0e4db 60%, transparent);
+  border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+.brand{ display:flex; align-items:center; gap:10px; text-decoration:none }
+.brand__logo{ width:34px; height:34px; border-radius:10px }
+.brand__name{ font-weight:800; color:#6b3b13; letter-spacing:.2px }
+.navpill{ display:flex; gap:8px }
+.navpill__btn{
+  padding:8px 12px; border-radius:999px; font-weight:700; font-size:14px;
+  color:var(--brand-2); text-decoration:none; border:1px solid #f2d8c4; background:var(--chip);
+  transition:all .2s ease;
+}
+.navpill__btn:hover{ transform:translateY(-1px); box-shadow:0 6px 14px rgba(0,0,0,.06) }
+.actions{ display:flex; align-items:center; gap:8px }
+.iconbtn{
+  position:relative; width:42px; height:42px; display:grid; place-items:center;
+  border-radius:12px; border:1px solid #f2d8c4; background:var(--chip); color:var(--brand);
+  transition:transform .15s ease, box-shadow .2s ease;
+}
+.iconbtn:hover{ transform:translateY(-2px) scale(1.04); box-shadow:0 8px 18px rgba(216,124,58,.22) }
+.badge{
+  position:absolute; top:-6px; inset-inline-end:-6px; min-width:18px; height:18px;
+  display:grid; place-items:center; background:#ff8866; color:#fff; font-size:11px; border-radius:999px; padding:0 4px
+}
+
+/* ===== Hero ===== */
+.hero{ min-height:120vh }
+.hero__inner{ display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center }
+@media (max-width:900px){ .hero__inner{ grid-template-columns:1fr; gap:16px } }
+.hero__title{ margin:0 0 6px; color:#3b2b23; font-weight:900; font-size:38px }
+.hero__desc{ margin:0 0 10px; color:var(--muted) }
+.hero__pills{ display:flex; flex-wrap:wrap; gap:8px }
+.pill{
+  background:var(--chip); border:1px solid #f2d8c4; color:var(--brand); padding:10px 14px; border-radius:999px;
+  font-weight:800; text-decoration:none
+}
+.hero__stage{ position:relative; height:520px; display:grid; place-items:center }
+@media (max-width:900px){ .hero__stage{ height:420px } }
+.hero__gif{
+  position:absolute; inset:0; margin:auto; width:min(640px,92%); height:auto; object-fit:contain;
+  border-radius:18px; filter:drop-shadow(0 28px 60px rgba(0,0,0,.22));
+  will-change:transform,opacity,filter; opacity:0; transform:translateY(80px) scale(.92); cursor:pointer
+}
+
+/* ===== Info bar ===== */
+.bar__inner{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:center; margin:12px 0 }
+.chip{ background:var(--chip); border:1px solid #f2d8c4; color:var(--brand-2); padding:8px 12px; border-radius:999px }
+
+/* ===== Sections / grid ===== */
+.sec-title{ margin:18px 0 10px; color:#6b3b13; font-size:22px; display:flex; align-items:center; gap:8px }
+.section-grid{ display:grid; gap:18px; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)) }
+
+/* ===== Card ===== */
+.card{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;
+  box-shadow:var(--shadow);
+  transition: transform .2s ease, box-shadow .25s ease, border-color .2s ease;
+}
+.card:hover{ transform:translateY(-4px); box-shadow:0 26px 60px rgba(0,0,0,.08); border-color:#f0d6c4 }
+.card__media{ position:relative; aspect-ratio:1/1; overflow:hidden }
+.food-img{
+  width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02);
+  transition: transform .25s ease, filter .25s ease;
+}
+.card:hover .food-img{ filter:saturate(1.05) contrast(1.02) }
+.card__body{ padding:14px; display:grid; gap:8px }
+.card__title{ margin:0; font-size:18px; font-weight:800; color:#3b2b23 }
+.card__desc{ margin:0; color:var(--muted); font-size:14px }
+.card__row{ display:flex; align-items:center; justify-content:space-between; gap:10px }
+.price-pill{ background:#fff2e8; color:var(--brand-2); padding:6px 10px; border-radius:999px; font-weight:800; font-size:13px }
+.qbtn{ width:36px; height:36px; display:grid; place-items:center; border-radius:10px; border:1px solid #f1d7c6; background:#fff7f1; font-weight:700; cursor:pointer }
+.qinput{ width:54px; text-align:center; border:1px solid #f1d7c6; border-radius:10px; height:36px; font-size:16px }
+.add-btn{
+  border:1px solid #f1d7c6; background:#fff; color:var(--brand); padding:10px 12px; border-radius:12px; font-weight:800; cursor:pointer;
+  transition: transform .18s ease, box-shadow .2s ease, background .2s ease;
+}
+.add-btn:hover{ transform:translateY(-2px); box-shadow:0 10px 22px rgba(216,124,58,.20); background:#fff7f1 }
+
+/* Stronger hover shake */
+.shake-on-hover:hover{ transform: translateY(-6px) scale(1.06) rotate(4deg) !important }
+
+/* ===== Skeleton ===== */
+.skel{ position:relative; overflow:hidden; background:#f2ede7; border:1px solid #efe3d8; border-radius:var(--radius) }
+.skel::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.55) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-100%); animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer{ 100%{ transform:translateX(100%) } }
+.card--skel{ height:360px }
+.skel-img{ height:64%; border-bottom:1px solid #efe3d8 }
+.skel-line{ height:14px; width:80%; margin:10px auto; border-radius:8px; background:#efe3d8 }
+.skel-line.sm{ width:50% }
+
+/* ===== Checkout ===== */
+.checkout__grid{
+  display:grid; gap:18px; grid-template-columns: 1fr; align-items:start;
+}
+@media (min-width:980px){
+  .checkout__grid{ grid-template-columns: 1fr 1fr; }
+}
+.cart.card h3{ margin:12px; }
+.cart__list{ list-style:none; margin:0; padding:0 12px; display:grid; gap:10px; }
+.cart__item{ display:flex; justify-content:space-between; gap:10px; border-bottom:1px dashed #eee; padding:8px 0; }
+.cart__fee, .cart__total{ display:flex; justify-content:space-between; padding:12px; }
+.cart__total strong{ font-size:18px; color:#3b2b23 }
+
+.form.card h3{ margin:12px; }
+.form__grid{
+  padding:0 12px 12px; display:grid; gap:10px; grid-template-columns:1fr 1fr;
+}
+.form__grid label{ display:grid; gap:6px; font-size:14px; color:#7a4a27 }
+.form__grid input{
+  width:100%; padding:10px; border:1px solid #e8c9af; border-radius:10px; background:#fff;
+}
+.ltr{ direction:ltr; unicode-bidi:plaintext; }
+.pay{ margin:0 12px 12px; border:1px dashed #f2c29f; border-radius:12px; padding:10px }
+.pay legend{ padding:0 6px; color:#6b3b13; font-weight:700 }
+.radio{ display:flex; align-items:center; gap:8px; margin:6px 0 }
+.tag{ padding:2px 8px; border-radius:999px; font-size:12px; }
+.tag-soon{ background:#ffe8d6; color:#8b5122; border:1px solid #f1d7c6 }
+
+.form__actions{ display:flex; gap:10px; padding:0 12px 14px }
+.btn{
+  background:var(--brand); color:#fff; padding:12px 18px; border-radius:12px; border:0; cursor:pointer;
+  box-shadow:0 10px 22px rgba(216,124,58,.20); font-weight:800
+}
+.btn.ghost{
+  background:#fff; color:var(--brand); border:1px solid #f3c6a6; box-shadow:none
+}
+
+/* ===== Promo video ===== */
+.promo-video{ padding:96px 0 120px }
+.pv__inner{ display:grid; gap:16px }
+.pv__stage{ display:grid; place-items:center }
+.pv__video{ width:min(960px,92%); border-radius:16px; box-shadow:var(--shadow); opacity:0; transform:translateY(24px) }
+
+/* ===== Footer ===== */
+.footer{ text-align:center; color:#8f7b6f; padding:24px 0 60px }
+
+/* ===== Toast ===== */
+#toast{
+  position:fixed; bottom:20px; inset-inline-start:50%; transform:translateX(-50%);
+  background:#2f2f2f; color:#fff; padding:10px 14px; border-radius:12px;
+  box-shadow:0 10px 24px rgba(0,0,0,.18); z-index:60; opacity:0; pointer-events:none
+}
+
+img, video { max-width: 100%; height: auto; }
+.container{ max-width:1120px; margin:0 auto; padding: clamp(12px,2vw,16px); }
+
+.glassnav{ position: sticky; top: max(8px, env(safe-area-inset-top)); z-index:100; display:grid; place-items:center; }
+.glassnav__inner{ width: min(100%, 1100px); }
+
+.navpill{ display:flex; gap:8px; overflow:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+.navpill::-webkit-scrollbar{ display:none; }
+.navpill__btn{ white-space: nowrap; }
+
+@media (max-width:480px){
+  .brand__name{ display:none; }
+}
+
+.hero{ min-height: auto; padding: 32px 0 24px; }
+.hero__inner{ display:grid; grid-template-columns:1fr; gap:16px; align-items:center; }
+.hero__title{ font-size: clamp(24px,5vw,38px); line-height:1.25; }
+.hero__desc{ font-size: clamp(14px, 3.6vw, 16px); }
+
+.hero__stage{ height:auto; aspect-ratio: 1/1; max-height: 360px; display:grid; place-items:center; }
+
+
+@media (min-width:700px){
+  .hero{ padding: 64px 0; }
+  .hero__inner{ grid-template-columns:1fr 1fr; }
+  .hero__stage{ aspect-ratio:auto; height:520px; }
+}
+
+.section-grid{ display:grid; gap:18px; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); }
+
+@media (hover:hover){
+  .card:hover{ transform: translateY(-4px); }
+  .iconbtn:hover{ transform: translateY(-2px) scale(1.04); }
+}
+@media (hover:none){
+  .card, .iconbtn{ transition: none; }
+}
+
+.pv__video{ width: 100%; max-width: 960px; border-radius:16px; box-shadow: var(--shadow); opacity:0; transform: translateY(24px); }
+
+.section-grid{
+  display: grid;
+  gap: 12px;                                  
+  grid-template-columns: repeat(2, minmax(0, 1fr));  
+}
+
+@media (max-width: 340px){
+  .section-grid{ grid-template-columns: 1fr; }
+}
+
+@media (min-width: 700px){
+  .section-grid{
+    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px){
+  .section-grid{
+    gap: 20px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.section-grid .card{
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.section-grid .card img{
+  width: 100%;
+  aspect-ratio: 4 / 3;       
+  object-fit: cover;
+}
+.section-grid .card .title{ 
+  font-size: clamp(13px, 2.8vw, 15px);
+  line-height: 1.35;
+}
+.section-grid .card .desc{
+  font-size: 12px; color:#6b6b6b; min-height: 32px;  
+}
+
+.section-grid .card .card__row:has(.qinput){
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* [QtyGroup] [spacer] [Price] */
+  align-items: center;
+  gap: 8px;
+  padding-inline: 6px; /* قاب جمع‌وجور */
+}
+
+.section-grid .card .card__row:has(.qinput) > .price-pill{ order: 3; justify-self: end; }
+.section-grid .card .card__row:has(.qinput) > div{ order: 1; }
+
+.section-grid .card .qbtn{
+  width: 36px; height: 36px; border-radius: 10px;
+  border: 1px solid #f1d7c6; background: #fff7f1;
+  font-weight: 800; line-height: 1; cursor: pointer;
+}
+.section-grid .card .qinput{
+  width: 44px; height: 36px;
+  text-align: center; font-weight: 700;
+  border: 1px solid #f1d7c6; border-radius: 10px; background: #fffaf6;
+}
+
+.section-grid .card .add-btn{
+  width: 100%; height: 40px; margin-top: 4px;
+  border-radius: 12px; border: 1px solid #f1d7c6;
+  background:#fff; color: var(--brand); font-weight: 800;
+}
+@media (max-width: 390px){
+  .section-grid .card .qbtn{ width: 32px; height: 32px; }
+  .section-grid .card .qinput{ width: 40px; height: 32px; }
+  .section-grid .card .add-btn{ height: 36px; }
+}
+.section-grid .card .price-pill{
+  background:#fff2e8; color:var(--brand-2);
+  border:1px solid #f1d7c6; /* قاب یکدست با بقیه */
+  padding:6px 10px; border-radius: 999px; font-weight: 800;
+}
+
+.section-grid .card .card__row:has(.qinput){
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+.price-pill{
+  height: 36px;
+  min-width: 70px;                  /* همیشه قابل‌خواندن */
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand);         /* رنگ برند (نارنجی) */
+  color: #fff;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: .2px;
+  font-variant-numeric: tabular-nums;  /* ستون‌بندی ارقام */
+  box-shadow: 0 1px 0 rgba(0,0,0,.05), 0 8px 18px rgba(216,124,58,.18);
+}
+
+.qbtn{ width:36px; height:36px; border-radius:10px; }
+.qinput{
+  height:36px; width:48px; text-align:center;
+  font-weight:700;
+}
+
+.add-btn{
+  width: 100%;
+  height: 40px;
+  margin-top: 6px;
+  border-radius: 12px;
+  border: 1px solid #f1d7c6;
+  background: #fff;
+  color: var(--brand);
+  font-weight: 800;
+}
+@media (max-width: 390px){
+  .price-pill{ min-width: 64px; font-size:14px }
+  .qbtn{ width:32px; height:32px }
+  .qinput{ height:32px; width:44px }
+  .add-btn{ height:36px }
+}
+.price-pill{
+  direction: ltr;            
+  unicode-bidi: isolate;       
+  white-space: nowrap;        
+  text-align: center;
+  min-width: 86px;           
+  padding-inline: 12px;
+}
+.section-grid .card .card__row:has(.qinput){
+  padding-inline: 12px;        
+  gap: 10px;
+}
+.qbtn{ width:36px; height:36px; border-radius:10px; }
+.qinput{ width:48px; height:36px; text-align:center; font-weight:700; }
+
+@media (max-width: 390px){
+  .price-pill{ min-width: 74px; font-size:14px; }
+  .qbtn{ width:32px; height:32px; }
+  .qinput{ width:44px; height:32px; }
+}
+.section-grid .card .card__row:has(.qinput){
+  display: grid !important;
+  grid-template-columns: auto 1fr;   
+  align-items: center;
+  gap: 10px;
+  padding-inline: 12px;             
+}
+.section-grid .card .card__row:has(.qinput) > .price-pill{
+  order: 1;              
+  justify-self: start;    
+  margin-inline: 2px 8px; 
+  direction: ltr;         
+  unicode-bidi: isolate;
+  white-space: nowrap;
+  height: 36px;
+  min-width: 84px;        
+  padding: 0 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--brand); color:#fff; border-radius:12px; border:0;
+  font-weight: 900; font-size: 15px; font-variant-numeric: tabular-nums;
+  box-shadow: 0 1px 0 rgba(0,0,0,.05), 0 8px 18px rgba(216,124,58,.18);
+}
+
+.section-grid .card .card__row:has(.qinput) > :not(.price-pill){
+  order: 2;               
+  justify-self: end;     
+}
+
+.qbtn{ width:36px; height:36px; border-radius:10px; }
+.qinput{ width:48px; height:36px; text-align:center; font-weight:700; }
+
+@media (max-width: 390px){
+  .price-pill{ min-width: 74px; font-size:14px; }
+  .qbtn{ width:32px; height:32px; }
+  .qinput{ width:44px; height:32px; }
+}
+/***** FINAL POLISH – Mobile-first *****/
+
+.section-grid{
+  display:grid !important;
+  gap:12px !important;
+  grid-template-columns: repeat(2, minmax(0,1fr)) !important; 
+}
+@media (max-width:340px){
+  .section-grid{ grid-template-columns: 1fr !important; }     
+}
+@media (min-width:700px){
+  .section-grid{
+    gap:18px !important;
+    grid-template-columns: repeat(3, minmax(0,1fr)) !important;
+  }
+}
+@media (min-width:1200px){
+  .section-grid{
+    gap:20px !important;
+    grid-template-columns: repeat(4, minmax(0,1fr)) !important;
+  }
+}
+
+.section-grid .card{
+  display:flex; flex-direction:column;
+  border-radius:16px; overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition:transform .18s ease, box-shadow .22s ease;
+}
+.section-grid .card:hover{ transform:translateY(-3px); box-shadow:0 20px 44px rgba(0,0,0,.08); }
+
+.section-grid .card .card__media{ aspect-ratio: 3 / 2 !important; }  
+.section-grid .card img{ width:100%; height:100%; object-fit:cover; }
+
+.section-grid .card .card__body{ padding:12px 12px 8px !important; display:grid; gap:6px; }
+.section-grid .card .card__title{
+  font-size:16px !important; font-weight:800; margin:0;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.section-grid .card .card__desc{
+  font-size:12px !important; color:#6b6b6b; margin:0;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  min-height:32px;
+}
+.section-grid .card .card__row:has(.qinput){
+  display:grid !important;
+  grid-template-columns: auto 1fr !important; 
+  align-items:center;
+  gap:10px;
+  padding:10px 12px 12px !important;
+}
+.section-grid .card .price-pill{
+  order:1; justify-self:start; margin-inline:2px 6px;
+  direction:ltr; unicode-bidi:isolate; white-space:nowrap;
+  height:36px; min-width:84px; padding:0 12px;
+  display:inline-flex; align-items:center; justify-content:center;
+  background: var(--brand) !important; color:#fff !important; border:0 !important;
+  border-radius:12px; font-weight:900; font-size:15px; font-variant-numeric:tabular-nums;
+  box-shadow:0 1px 0 rgba(0,0,0,.05), 0 8px 18px rgba(216,124,58,.18);
+}
+.section-grid .card .card__row:has(.qinput) > :not(.price-pill){
+  order:2; justify-self:end;
+}
+
+
+.qbtn{ width:36px; height:36px; border-radius:10px; border:1px solid #f1d7c6; background:#fff7f1; font-weight:800; }
+.qinput{ width:48px; height:36px; text-align:center; font-weight:700; border:1px solid #f1d7c6; border-radius:10px; background:#fffaf6; }
+
+
+.section-grid .card .add-btn{
+  width:100%; height:40px; margin:6px 12px 12px;
+  border-radius:12px; border:1px solid #f1d7c6; background:#fff; color:var(--brand); font-weight:800;
+}
+@media (max-width:390px){
+  .section-grid .card .price-pill{ min-width:74px; font-size:14px; }
+  .qbtn{ width:32px; height:32px; }
+  .qinput{ width:44px; height:32px; }
+}
+.section-grid .card .card__row{
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 12px !important;
+  overflow: visible !important;   /* چیزی بریده نشود */
+}
+
+.section-grid .card .card__row > *{
+  flex: 0 0 auto !important;
+}
+.section-grid .card .price-pill{
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  white-space: nowrap !important;
+  height: 36px !important;
+  min-width: 82px !important;     /* جا برای "13,50 €" */
+  padding: 0 12px !important;
+  display: inline-flex !important;
+  align-items: center; justify-content: center;
+  margin-inline-start: auto !important; /* ← قیمت می‌چسبد به سمت داخل کارت و هرگز نصفه نمی‌شود */
+  background: var(--brand) !important; color:#fff !important; border:0 !important;
+  border-radius: 12px !important; font-weight: 900 !important; font-variant-numeric: tabular-nums;
+  box-shadow: 0 1px 0 rgba(0,0,0,.05), 0 8px 18px rgba(216,124,58,.18);
+}
+
+.section-grid .card .qbtn{ width:36px !important; height:36px !important; border-radius:10px; }
+.section-grid .card .qinput{ width:48px !important; height:36px !important; text-align:center; font-weight:700; }
+
+.section-grid .card .add-btn{
+  display:block !important;
+  width: calc(100% - 24px) !important;  /* 12px padding هر طرف */
+  margin: 6px 12px 12px !important;
+  border-radius: 12px;
+  border: 1px solid #f1d7c6;
+  background: #fff; color: var(--brand); font-weight: 800;
+}
+
+@media (max-width: 390px){
+  .section-grid .card .price-pill{ min-width: 74px !important; font-size: 14px !important; }
+  .section-grid .card .qbtn{ width:32px !important; height:32px !important; }
+  .section-grid .card .qinput{ width:44px !important; height:32px !important; }
+}
+.section-grid .card .card__row{
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding-block: 10px !important;
+  padding-inline-start: 12px !important;
+  padding-inline-end: 108px !important;  /* ← عرض قرص + فاصله امن */
+  overflow: visible !important;
+}
+.section-grid .card .price-pill{
+  position: absolute !important;
+  inset-inline-end: 12px !important;     /* در RTL می‌شود سمت راست کارت */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  white-space: nowrap !important;
+
+  height: 36px !important;
+  min-width: 84px !important;
+  padding: 0 12px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: var(--brand) !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  font-weight: 900 !important;
+  font-size: 15px !important;
+  font-variant-numeric: tabular-nums !important;
+  box-shadow: 0 1px 0 rgba(0,0,0,.05), 0 8px 18px rgba(216,124,58,.18) !important;
+}
+.section-grid .card .qbtn{ width:36px !important; height:36px !important; border-radius:10px; }
+.section-grid .card .qinput{ width:48px !important; height:36px !important; text-align:center; font-weight:700; }
+
+.section-grid .card .add-btn{
+  display:block !important;
+  width: calc(100% - 24px) !important;   
+  margin: 6px 12px 12px !important;
+  border-radius: 12px !important;
+}
+
+@media (max-width: 390px){
+  .section-grid .card .price-pill{
+    min-width: 74px !important;
+    height: 34px !important;
+    font-size: 14px !important;
+  }
+  .section-grid .card .card__row{
+    padding-inline-end: 96px !important; 
+  }
+  .section-grid .card .qbtn{ width:32px !important; height:32px !important; }
+  .section-grid .card .qinput{ width:44px !important; height:32px !important; }
+}
+
+/* ========= FINAL HARD FIX ========= */
+.section-grid .card .card__row{
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 12px !important;
+  overflow: visible !important;
+}
+.section-grid .card .qty-wrap{
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-width: 112px !important;   
+  flex: 0 0 auto !important;
+}
+
+.section-grid .card .card__row:has(.qinput){
+}
+
+.section-grid .card .qbtn{
+  width: 36px !important; height: 36px !important;
+  border-radius: 10px; border: 1px solid #f1d7c6; background:#fff7f1; font-weight:800;
+  flex: 0 0 auto !important;
+}
+.section-grid .card .qinput{
+  width: 48px !important; height: 36px !important;
+  text-align: center; font-weight:700; border:1px solid #f1d7c6; border-radius:10px; background:#fffaf6;
+  flex: 0 0 auto !important;
+}
+
+.section-grid .card .price-pill{
+  margin-inline-start: auto !important;   /* قیمت می‌رود سمت داخل کارت */
+  direction: ltr !important;              /* 11,00 € درست دیده شود */
+  unicode-bidi: isolate !important;
+  white-space: nowrap !important;
+  height: 36px !important; min-width: 84px !important; padding: 0 12px !important;
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+  background: var(--brand) !important; color:#fff !important; border:0 !important; border-radius:12px !important;
+  font-weight: 900 !important; font-variant-numeric: tabular-nums !important;
+}
+
+.section-grid .card .add-btn{
+  display:block !important;
+  width: calc(100% - 24px) !important;   /* هماهنگ با padding 12px هر طرف */
+  margin: 6px 12px 12px !important;
+  border-radius: 12px; border:1px solid #f1d7c6; background:#fff; color:var(--brand); font-weight:800;
+}
+@media (max-width: 390px){
+  .section-grid .card .qbtn{ width:32px !important; height:32px !important; }
+  .section-grid .card .qinput{ width:44px !important; height:32px !important; }
+  .section-grid .card .price-pill{ min-width:72px !important; height:34px !important; font-size:14px !important; }
+}
+
+/* === Controls row: qty on first line, price centered on second === */
+.section-grid .card .card__row{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;   /* qty وسطِ ردیف اول */
+  gap:10px !important;
+  flex-wrap: wrap !important;           /* اجازه‌ی رفتن قیمت به خط بعد */
+  padding:10px 12px !important;
+  overflow:visible !important;
+}
+.section-grid .card .qbtn{
+  width:36px !important; height:36px !important; flex:0 0 auto !important;
+  border-radius:10px; border:1px solid #f1d7c6; background:#fff7f1; font-weight:800;
+}
+.section-grid .card .qinput{
+  width:48px !important; height:36px !important; flex:0 0 auto !important;
+  text-align:center; font-weight:700; border:1px solid #f1d7c6; border-radius:10px; background:#fffaf6;
+}
+
+.section-grid .card .price-pill{
+  order:2 !important;                   /* بیاد بعد از کنترل‌های تعداد */
+  width:100% !important;
+  height:36px !important;
+  margin-top:6px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+  white-space:nowrap !important;
+  background:var(--brand) !important;
+  color:#fff !important;
+  border:0 !important;
+  border-radius:12px !important;
+  font-weight:900 !important;
+  font-variant-numeric:tabular-nums !important;
+  box-shadow:0 1px 0 rgba(0,0,0,.05),0 8px 18px rgba(216,124,58,.18) !important;
+}
+.section-grid .card .add-btn{
+  display:block !important;
+  width:calc(100% - 24px) !important;   
+  margin:6px 12px 12px !important;
+  border-radius:12px !important;
+  border:1px solid #f1d7c6;
+  background:#fff; color:var(--brand); font-weight:800;
+}
+
+@media (max-width:390px){
+  .section-grid .card .qbtn{ width:32px !important; height:32px !important; }
+  .section-grid .card .qinput{ width:44px !important; height:32px !important; }
+  .section-grid .card .price-pill{ height:34px !important; font-size:14px !important; }
+}
+
+
+.section-grid .card .card__row {
+  display: flex !important;
+  flex-direction: column !important;  /* همه زیر هم بیان */
+  align-items: center !important;
+  gap: 6px !important;                /* فاصله‌ی بین ردیف‌ها */
+  padding: 10px 0 6px !important;
+}
+
+.section-grid .card .card__row .qbtn,
+.section-grid .card .card__row .qinput {
+  flex: 0 0 auto;
+}
+
+.section-grid .card .card__row .price-pill {
+  order: 2 !important;
+  width: auto !important;
+  margin-top: 4px !important;       /* کمی فاصله از بالا */
+  align-self: center !important;
+  display: flex; align-items: center; justify-content: center;
+  direction: ltr; unicode-bidi: isolate; white-space: nowrap;
+  background: var(--brand) !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  font-weight: 900; font-size: 15px;
+  height: 36px; padding: 0 14px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.05), 0 8px 18px rgba(216,124,58,.18);
+}
+
+@media (max-width: 390px){
+  .section-grid .card .card__row { gap: 4px !important; }
+  .section-grid .card .card__row .price-pill {
+    height: 34px !important; font-size: 14px !important;
+  }
+}
+.section-grid .card .card__row{
+  display: grid !important;
+  grid-template-columns: auto auto auto !important; /* + | qty | - */
+  grid-template-rows: auto auto !important;         /* row1: controls, row2: price */
+  justify-content: center !important;
+  align-items: center !important;
+  column-gap: 10px !important;
+  row-gap: 8px !important;
+  padding: 10px 12px !important;
+}
+
+.section-grid .card .card__row .qbtn,
+.section-grid .card .card__row .qinput{
+  grid-row: 1 !important;
+  flex: 0 0 auto; 
+}
+
+.section-grid .card .card__row .price-pill{
+  grid-row: 2 !important;
+  grid-column: 1 / -1 !important;    
+  justify-self: center !important;
+
+  height: 36px !important;
+  padding: 0 14px !important;
+  direction: ltr !important; unicode-bidi: isolate !important; white-space: nowrap !important;
+  background: var(--brand) !important; color:#fff !important; border:0 !important; border-radius:12px !important;
+  font-weight:900 !important; font-variant-numeric:tabular-nums !important;
+  box-shadow:0 1px 0 rgba(0,0,0,.05), 0 8px 18px rgba(216,124,58,.18) !important;
+}
+
+/* ابعاد لمسی کنترل‌ها */
+.section-grid .card .qbtn{ width:36px !important; height:36px !important; border-radius:10px; }
+.section-grid .card .qinput{ width:48px !important; height:36px !important; text-align:center; font-weight:700; }
+
+/* موبایل خیلی باریک */
+@media (max-width:390px){
+  .section-grid .card .qbtn{ width:32px !important; height:32px !important; }
+  .section-grid .card .qinput{ width:44px !important; height:32px !important; }
+  .section-grid .card .card__row .price-pill{ height:34px !important; font-size:14px !important; }
+}
+
+
+
+/*Test*/
+
+.section-grid .card .card__row{
+  display: grid !important;
+  grid-template-columns: 40px 56px 40px !important;  
+  grid-auto-rows: auto;
+  justify-content: center !important;
+  align-items: center !important;
+  column-gap: 10px !important;
+  row-gap: 10px !important;
+  padding: 12px 12px 10px !important;
+  text-align: center !important;
+}
+
+.section-grid .card .qbtn{
+  width: 40px !important; height: 40px !important;
+  border-radius: 10px; border: 1px solid #f1d7c6; background:#fff;
+  font-weight: 800; color: var(--brand);
+}
+.section-grid .card .qinput{
+  width: 56px !important; height: 40px !important;
+  text-align: center; font-weight: 700;
+  border: 1px solid #f1d7c6; border-radius: 10px; background:#fffaf6;
+}
+
+.section-grid .card .price-pill{
+  grid-row: 2 !important;
+  grid-column: 1 / -1 !important;      /* از ستون اول تا آخر */
+  justify-self: center !important;
+  direction: ltr !important; unicode-bidi: isolate !important; white-space: nowrap !important;
+
+  min-width: 120px;                     /* همه کارت‌ها یک عرض مینیمم شبیه هم */
+  max-width: 180px;
+  width: fit-content;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg,#e78645,#d66f2f);
+  color:#fff; border:0; font-weight:900; letter-spacing:.2px;
+  box-shadow: 0 3px 12px rgba(216,124,58,.22);
+}
+
+.section-grid .card .add-btn{
+  display: block !important;
+  width: min(220px, calc(100% - 24px)) !important;
+  margin: 8px auto 14px !important;     /* وسط */
+  border-radius: 12px; border: 1px solid #f1d7c6;
+  background:#fff; color: var(--brand); font-weight:800;
+}
+
+.section-grid .card .card__body{
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.section-grid .card .card__title{ margin: 0 0 2px; }
+.section-grid .card .card__desc{ min-height: 32px; }
+
+@media (max-width: 390px){
+  .section-grid .card .qbtn{ width:36px !important; height:36px !important; }
+  .section-grid .card .qinput{ width:50px !important; height:36px !important; }
+  .section-grid .card .price-pill{ min-width:110px; height:34px; font-size:14px; }
+}
+
+.section-grid .card .add-btn {
+  display: block !important;
+  width: 80% !important;               /* پهنا نسبت به کارت */
+  max-width: 240px !important;
+  margin: 10px auto 16px !important;
+  
+  background: linear-gradient(135deg, #ffede1, #fff4ec);
+  color: #d86a2f;
+  font-weight: 900;
+  font-size: 15px;
+  border: 1px solid #f2cbb0;
+  border-radius: 14px;
+  padding: 10px 0 !important;
+  text-align: center;
+  transition: all .25s ease;
+  box-shadow: 0 3px 10px rgba(216,124,58,0.15);
+}
+.section-grid .card .add-btn:hover {
+  background: linear-gradient(135deg, #fbd2b4, #f8b67c);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(216,124,58,0.3);
+  transform: translateY(-1px);
+}
+@media (max-width: 430px){
+  .section-grid .card .add-btn {
+    width: 85% !important;
+    font-size: 14px;
+    padding: 9px 0 !important;
+    border-radius: 12px;
+  }
+}
+.section-grid .card .add-btn {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 85% !important;
+  max-width: 240px;
+  height: 42px;
+  margin: 12px auto 16px !important;
+  
+  background: #fff;
+  color: var(--brand);
+  border: 2px solid #f3c19b;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  line-height: 1 !important;
+}
+.section-grid .card .add-btn:hover {
+  background: #fff7ef;
+  border-color: #e79d5d;
+  box-shadow: 0 4px 10px rgba(231,157,93,0.2);
+  transform: translateY(-1px);
+}
+@media (max-width: 430px) {
+  .section-grid .card .add-btn {
+    width: 90% !important;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+.section-grid .card .add-btn {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  width: 85% !important;
+  height: 48px;                   
+  margin: 14px auto 20px !important;
+  
+  background: #fff;
+  color: #d86a2f;                  
+  border: 2px solid #f3c19b;
+  border-radius: 14px;
+  
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+.section-grid .card .add-btn:hover {
+  background: #fff7ef;
+  border-color: #e79d5d;
+  box-shadow: 0 5px 14px rgba(231,157,93,0.25);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 430px) {
+  .section-grid .card .add-btn {
+    width: 90% !important;
+    height: 46px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+}
+.section-grid .card .card__row{
+  display: grid !important;
+  grid-template-columns: 44px 64px 44px !important;  /* - | qty | + */
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 12px 12px 8px !important;
+}
+
+.section-grid .card .qbtn{
+  width:44px !important; height:44px !important;
+  border:1px solid #f1d7c6; border-radius:12px; background:#fff; color:#d86a2f; font-weight:800;
+}
+.section-grid .card .qinput{
+  width:64px !important; height:44px !important;
+  border:1px solid #f1d7c6; border-radius:12px; background:#fffaf6; text-align:center; font-weight:800;
+}
+
+:root{ --cta-w: 230px; }
+@media (max-width:430px){ :root{ --cta-w: 210px; } }
+.section-grid .card .price-pill{
+  grid-column: 1 / -1 !important;
+  justify-self: center !important;
+
+  display:flex !important;
+  align-items:center; justify-content:center;
+  width: var(--cta-w) !important;
+  height: 48px !important;
+
+  direction:ltr !important; unicode-bidi:isolate !important; white-space:nowrap !important;
+  background: linear-gradient(135deg,#e78645,#d66f2f) !important;
+  color:#fff !important; border:0 !important; border-radius:14px !important;
+  font-weight:900; font-size:16px; letter-spacing:.2px;
+  box-shadow:0 6px 16px rgba(216,124,58,.25);
+  margin: 4px auto 8px !important;
+}
+.section-grid .card .add-btn,
+.section-grid .card .btn-add,
+.section-grid .card button:not(.qbtn){  
+  display:flex !important;
+  align-items:center; justify-content:center;
+  width: var(--cta-w) !important;
+  height: 52px !important;
+
+  margin: 8px auto 16px !important;
+  background:#fff; color:#d86a2f;
+  border:2px solid #f3c19b; border-radius:14px;
+  font-weight:900; font-size:16px; letter-spacing:.2px;
+  white-space:nowrap; line-height:1 !important; box-sizing:border-box;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
+  cursor:pointer; transition:all .25s ease;
+}
+.section-grid .card .add-btn:hover,
+.section-grid .card .btn-add:hover,
+.section-grid .card button:not(.qbtn):hover{
+  background:#fff7ef; border-color:#e79d5d;
+  box-shadow:0 8px 18px rgba(231,157,93,.28);
+  transform: translateY(-2px);
+}
+
+.section-grid .card .card__body{ display:flex; flex-direction:column; align-items:center; text-align:center; }
+.section-grid .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.section-grid .card .card__row { justify-content: center !important; }
+
+.section-grid .card .price-pill{
+  align-self: center !important;     /* محور افقیِ فلکس */
+  justify-self: center !important;   /* اگر گرید در والد باشد */
+  margin-inline: auto !important;    /* تضمین نهایی وسط */
+  display: flex !important; align-items: center; justify-content: center;
+}
+
+.section-grid .card :is(.add-btn, .btn-add, button:not(.qbtn)){
+  align-self: center !important;     
+  justify-self: center !important;  
+  margin-inline: auto !important;    
+  display: flex !important; align-items: center; justify-content: center;
+  text-align: center;
+  line-height: 1 !important; white-space: nowrap;  
+  width: var(--cta-w, 230px) !important;           
+  height: 52px !important;                        
+  border-radius: 14px;
+}
+
+
+@media (max-width: 430px){
+  .section-grid .card :is(.add-btn, .btn-add, button:not(.qbtn)),
+  .section-grid .card .price-pill{
+    width: 210px !important;
+  }
+}
+/* === FINAL OVERRIDES: Qty (row 1) | Price (row 2 centered) | Wide Add button === */
+.section-grid .card .card__row{
+  display:grid !important;
+  grid-template-columns: auto auto auto !important; /* + | qty | - */
+  grid-template-rows: auto auto !important;         /* row1=controls, row2=price */
+  justify-content:center !important;
+  align-items:center !important;
+  column-gap:10px !important;
+  row-gap:10px !important;
+  padding:12px 12px 8px !important;
+}
+
+.section-grid .card .qbtn{
+  width:38px !important; height:38px !important;
+  border-radius:10px; border:1px solid #f1d7c6; background:#fff7f1; font-weight:800;
+}
+.section-grid .card .qinput{
+  width:50px !important; height:38px !important;
+  text-align:center; font-weight:700; border:1px solid #f1d7c6; border-radius:10px; background:#fffaf6;
+}
+
+/* PRICE — always second row, centered, one-line, nice pill */
+.section-grid .card .price-pill{
+  grid-row:2 !important;
+  grid-column:1 / -1 !important;      /* span all columns */
+  justify-self:center !important;
+
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  height:40px !important; padding:0 16px !important; min-width:92px !important;
+
+  direction:ltr !important; unicode-bidi:isolate !important; white-space:nowrap !important;
+  background:var(--brand) !important; color:#fff !important;
+  border:0 !important; border-radius:12px !important;
+  font-weight:900 !important; font-size:15px !important; font-variant-numeric:tabular-nums !important;
+  box-shadow:0 1px 0 rgba(0,0,0,.05), 0 8px 18px rgba(216,124,58,.18) !important;
+}
+
+/* ADD TO CART — full width, perfectly centered */
+.section-grid .card .add-btn{
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  width:calc(100% - 24px) !important;    /* 12px padding per side */
+  height:44px !important;
+  margin:8px 12px 14px !important;
+  border:1px solid #f1d7c6 !important; border-radius:12px !important;
+  background:#fff !important; color:var(--brand) !important;
+  font-weight:800 !important; font-size:14px !important; line-height:1 !important;
+}
+
+/* Small phones */
+@media (max-width:390px){
+  .section-grid .card .qbtn{ width:34px !important; height:34px !important; }
+  .section-grid .card .qinput{ width:46px !important; height:34px !important; }
+  .section-grid .card .price-pill{ height:36px !important; font-size:14px !important; min-width:84px !important; padding:0 14px !important; }
+  .section-grid .card .add-btn{ height:42px !important; }
+}
+
+
+
+
+

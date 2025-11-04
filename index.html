@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MAMA’s KÜCHE — منوی آنلاین</title>
+  <meta name="description" content="غذای خانگی تازه و گرم | سفارش آنلاین + سبد خرید + واتساپ + پرداخت" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Styles.css" />
+  <!-- GSAP (اختیاری برای انیمیشن‌ها) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- ===== Navigation (Glass) ===== -->
+  <header class="glassnav">
+    <div class="glassnav__inner">
+      <a class="brand" href="#">
+        <img src="assets/logo.webp" alt="MAMA’s KÜCHE" class="brand__logo" />
+        <span class="brand__name">MAMA’s KÜCHE</span>
+      </a>
+
+      <nav class="navpill">
+        <a href="#menu" class="navpill__btn">منو</a>
+        <a href="#starters" class="navpill__btn">پیش‌غذا</a>
+        <a href="#sides" class="navpill__btn">مخلفات</a>
+        <a href="#checkout" class="navpill__btn">تسویه</a>
+      </nav>
+
+      <div class="actions">
+        <a class="iconbtn" href="https://wa.me/491749576537" target="_blank" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path fill="currentColor" d="M20 3.9A10 10 0 0 0 3.1 16.8L2 22l5.3-1.1A10 10 0 1 0 20 3.9Zm-7.9 16a8 8 0 0 1-4.1-1.1l-.3-.2-3.1.7.7-3.1-.2-.3a8 8 0 1 1 7 4Z"/>
+            <path fill="currentColor" d="M17.2 14.2c-.2-.1-1-.4-1.2-.5s-.3-.1-.4.1c-.2.2-.5.5-.7.6-.1.1-.3.1-.5.1-.2 0-.4 0-.6-.3-.3-.2-1.2-.5-2.3-1.6-.9-.9-1.6-2-1.7-2.2-.2-.4 0-.6.1-.7l.3-.4c.1-.1.1-.2.2-.3s0-.2 0-.3c0-.1-.4-1.1-.5-1.5s-.4-.3-.6-.3h-.5c-.1 0-.3.1-.4.2-.1.1-.9.9-.9 2.1s.9 2.5 1 2.7c.1.2 1.8 2.8 4.3 3.9.6.3 1 .4 1.3.6.6.2 1.1.1 1.5.1.5-.1 1-.4 1.1-.8.2-.4.2-.8.2-.9 0-.1-.2-.1-.3-.2Z"/>
+          </svg>
+        </a>
+
+        <button id="cartBtn" class="iconbtn" aria-label="سبد خرید">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path fill="currentColor" d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 .001 4.001A2 2 0 0 0 17 18ZM6.2 6l.5 2H20a1 1 0 0 1 .97 1.24l-1.8 7.2A2 2 0 0 1 17.2 18H8a2 2 0 0 1-1.9-1.4L3.3 4H2a1 1 0 0 1 0-2h2a1 1 0 0 1 .97.76L6.2 6Z"/>
+          </svg>
+          <span id="cartCount" class="badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <h1 class="hero__title">طعم غذای خانگی، تازه و گرم</h1>
+          <!-- متن زیر پویاست: span#heroRangeTxt توسط app.js پر می‌شود -->
+          <p class="hero__desc">
+            ارسال از ۱۲:۰۰ • هزینه ارسال <span id="heroShipFee">2.50€</span> • سفارش فعال
+            <span id="heroRangeTxt">۳ تا ۷ نوامبر</span>
+          </p>
+          <div class="hero__pills">
+            <a href="#menu" class="pill">منوی هفته</a>
+            <a href="#starters" class="pill">پیش‌غذا</a>
+            <a href="#sides" class="pill">مخلفات</a>
+            <a href="#checkout" class="pill">تسویه و ارسال</a>
+          </div>
+        </div>
+        <div class="hero__stage">
+          <img id="heroGif" class="hero__gif shake-on-hover" src="assets/hero/hand.gif" alt="Hand with Apple" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Info bar ===== -->
+    <section class="bar">
+      <div class="bar__inner">
+        <div class="chip"><span id="chipShipFee">2.50€</span> هزینه ارسال</div>
+        <div class="chip">ارسال از 12:00</div>
+      </div>
+    </section>
+
+    <!-- ===== Daily ===== -->
+    <section>
+      <h2 class="sec-title">غذای ثابت 🍛</h2>
+      <div id="dailyGrid" class="section-grid"></div>
+    </section>
+
+    <!-- ===== Weekly ===== -->
+    <section id="menu">
+      <!-- عنوان پویا: span#weekTitle توسط app.js پر می‌شود -->
+      <h2 class="sec-title">منوی هفته <span id="weekTitle">۳–۷ نوامبر</span> 📅</h2>
+
+      <!-- سوییچر هفته (توسط app.js پر و فعال می‌شود) -->
+      <div class="week-switcher" style="display:flex;align-items:center;gap:8px;margin:10px 0 14px;">
+        <label for="weekSelect" style="color:#6b6b6b">هفته:</label>
+        <select id="weekSelect" style="padding:6px 10px;border-radius:10px;border:1px solid #e6e6e6;background:#fff"></select>
+      </div>
+
+      <div id="menuGrid" class="section-grid"></div>
+    </section>
+
+    <!-- ===== Starters ===== -->
+    <section id="starters">
+      <h2 class="sec-title">پیش‌غذا 🥣</h2>
+      <div id="startersGrid" class="section-grid"></div>
+    </section>
+
+    <!-- ===== Sides ===== -->
+    <section id="sides">
+      <h2 class="sec-title">مخلفات و چاشنی‌ها 🥗</h2>
+      <div id="sidesGrid" class="section-grid"></div>
+    </section>
+
+    <!-- ===== Checkout ===== -->
+    <section id="checkout" class="checkout">
+      <div class="checkout__grid">
+        <aside class="cart card">
+          <h3>🧺 سبد خرید</h3>
+          <ul id="cartList" class="cart__list"></ul>
+          <div class="cart__fee"><span>هزینه ارسال</span><span id="shipFee">€ 2.50</span></div>
+          <div class="cart__total"><span>جمع کل</span><strong id="cartTotal">€ 0.00</strong></div>
+        </aside>
+
+        <form id="orderForm" class="form card" autocomplete="on">
+          <h3>اطلاعات تحویل</h3>
+          <div class="form__grid">
+            <label>نام و نام‌خانوادگی
+              <input id="f_name" required placeholder=" Alex">
+            </label>
+            <label>شماره تماس
+              <input id="f_phone" required placeholder="+49 172 12345..." class="ltr">
+            </label>
+            <label>شهر
+              <input id="f_city" required placeholder="Düsseldorf">
+            </label>
+            <label>خیابان
+              <input id="f_street" required placeholder="Radstr.">
+            </label>
+            <label>پلاک
+              <input id="f_no" required placeholder="3">
+            </label>
+            <label>کدپستی
+              <input id="f_zip" required placeholder="40547">
+            </label>
+            <label>زمان مدنظر
+              <input id="f_time" placeholder="12:30" class="ltr">
+            </label>
+            <label>توضیحات
+              <input id="f_note" placeholder="بدون پیاز تند ...">
+            </label>
+          </div>
+
+          <fieldset class="pay">
+            <legend>روش پرداخت</legend>
+            <label class="radio">
+              <input type="radio" name="pay" value="cash" checked>
+              💵 پرداخت درب منزل
+            </label>
+            <label class="radio">
+              <input type="radio" name="pay" value="paypal">
+              💳 PayPal <span class="tag tag-soon">به‌زودی</span>
+            </label>
+          </fieldset>
+
+          <div class="form__actions">
+            <button type="button" id="btnPreview" class="btn ghost">پیش‌نمایش فاکتور</button>
+            <button type="button" id="btnWhatsApp" class="btn">ارسال سفارش در واتساپ</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== Promo Video ===== -->
+    <section id="promoVideo" class="promo-video">
+      <div class="pv__inner">
+        <div class="pv__head"><p>واقعی، تازه و روزپخت</p></div>
+        <div class="pv__stage">
+          <video id="pvVideo" class="pv__video" playsinline muted preload="metadata" controls
+                 src="assets/hero/intro.mp4" poster="assets/hero/hand.gif"></video>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">❤️ MAMA’s KÜCHE — طعم عشق در هر لقمه.</footer>
+  <div id="toast"></div>
+
+  <!-- اسکریپت اصلی -->
+  <script src="app.js"></script>
+</body>
+</html>
